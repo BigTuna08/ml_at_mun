@@ -21,6 +21,11 @@ clfs = [RandomForestClassifier(),  # *************
         AdaBoostClassifier()]      # now list classifiers
 
 
+# clfs = [RandomForestClassifier(max_depth=1),
+#         RandomForestClassifier(max_depth=2),
+#         RandomForestClassifier(max_depth=4),
+#         RandomForestClassifier(max_depth=8), ]
+
 
 ####################          Get data                  ###########################
 

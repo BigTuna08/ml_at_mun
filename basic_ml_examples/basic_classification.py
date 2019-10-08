@@ -32,5 +32,3 @@ result = cross_validate(clf, features, labels, cv=FOLDS)
 
 print("Cv results")
 for res in result["test_score"]: print(res)
-
-\

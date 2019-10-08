@@ -29,3 +29,31 @@
 # ax.set_xticklabels([get_clf_name(clf) for clf in clfs])
 # ax.set_yticks([0.5,1])
 # plt.show()
+
+
+
+
+# #####################               Scale features                     ######################
+# from sklearn import preprocessing
+# scaler = preprocessing.StandardScaler().fit(features)
+# features = scaler.transform(features)
+#
+
+
+# #########################             tsne                                  #######################
+# from sklearn.manifold import t_sne
+# from matplotlib import pyplot as plt
+# tsne = t_sne.TSNE()
+# fx = tsne.fit_transform(X)
+# plt.scatter(fx[:,0], fx[:, 1])
+# plt.show()
+
+
+
+##########################            grid search                            #############
+# params = {"n_estimators":[10, 100], "max_depth": [1,3,5]}
+# from sklearn.model_selection import GridSearchCV
+# clf = GridSearchCV(RandomForestClassifier())
+#
+# print(sorted(clf.cv_results_.keys()))
+
