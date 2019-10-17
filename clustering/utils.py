@@ -1,5 +1,14 @@
-from practice import loader
+
 from sklearn.metrics import normalized_mutual_info_score
+import numpy as np
+
+TIME_STR = "17_30"  # replace with time str from your data
+
+
+
+def loader(fname):
+    fstr = "data/{}_" + TIME_STR +".npy"
+    return np.load(fstr.format(fname))
 
 
 def score_clf(clf=None):

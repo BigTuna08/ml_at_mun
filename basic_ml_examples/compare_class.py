@@ -17,10 +17,10 @@ data_sets = ["Breast Cancer",
 dataset = data_sets[0]              # pick data set
 FOLDS = 5                           # set # of folds for cross validation
 
-clfs = [RandomForestClassifier(),  # *************
-        AdaBoostClassifier()]      # now list classifiers
+# clfs = [RandomForestClassifier(),  # *************
+#         AdaBoostClassifier()]      # now list classifiers
 
-
+#
 # clfs = [RandomForestClassifier(max_depth=1),
 #         RandomForestClassifier(max_depth=2),
 #         RandomForestClassifier(max_depth=4),
@@ -34,15 +34,36 @@ features, labels = get_data(dataset)
 
 ###################          Fit classifier            ###########################
 
-results = {}
-for clf in clfs:                  # ***************** add loop over classifiers
-    result = cross_validate(clf, features, labels, cv=FOLDS)
-    results[get_clf_name(clf)] = result
+# results = {}
+# for clf in clfs:                  # ***************** add loop over classifiers
+#     result = cross_validate(clf, features, labels, cv=FOLDS)
+#     results[get_clf_name(clf)] = result
 
+params = {"n_estimators":[10, 100], "max_depth": [1,3,5]}
+
+from sklearn.model_selection import GridSearchCV
+clf = GridSearchCV(RandomForestClassifier(), params)
+clf.fit(features, labels)
+
+print(sorted(clf.cv_results_.keys()))
 
 
 ###################          Display result          ###########################
-
-for name, result in results.items(): # ***************** add loop over results
-    print("Cv results for", name)
-    for res in result["test_score"]: print(res)
+#
+# for name, result in results.items(): # ***************** add loop over results
+#     print("Cv results for", name)
+#     for res in result["test_score"]: print(res)
+#
+# from matplotlib import pyplot as plt
+# import numpy as np
+#
+# fig = plt.figure()
+# ax = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
+#
+# all_scores = np.transpose([np.array(results[key]["test_score"]) for key in results])
+# ax.boxplot(all_scores)
+#
+# ax.set_xticks([1,2])
+# ax.set_xticklabels([get_clf_name(clf) for clf in clfs])
+# ax.set_yticks([0.8,1])
+# plt.show()
