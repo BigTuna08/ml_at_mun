@@ -1,5 +1,6 @@
 logs/
 figs/
+data/
 __pycache__/
 .idea/
 .DS_Store
