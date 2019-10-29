@@ -4,7 +4,7 @@ import numpy as np
 N_SAMPLES = 500
 N_FEATURES = 100
 N_CLUSTERS = 5
-PARAM = 0.1
+PARAM = 0.5
 TEST_SIZE = 0.2
 
 
@@ -19,9 +19,7 @@ def assign_clusters(n=N_SAMPLES, c=N_CLUSTERS, param=PARAM):
         cl_size = min(int(norm.rvs(mean_size, sd, 1)), n_remaining)
         if i == (c-1) or cl_size > n_remaining:
             cl_size = n_remaining
-        print(n_remaining, n, c, mean_size, cl_size)
         choices = np.random.choice(availible_inds, cl_size, replace=False)
-        print(len(choices))
         for ch in choices:
             assignments[ch] = i
         n_remaining = n_remaining - cl_size
@@ -87,20 +85,16 @@ def get_time():
 
 def create_features(means, sds, cluster_assignments=None):
 
-    print(means)
     f = means.shape[1]
-    print("means shape", means.shape,f)
+
 
     # if not cluster_assignments.any() == None: # treat each point as own cluster
     #     cluster_assignments = np.array(list(range(f)))
 
     features = np.zeros([len(cluster_assignments),f])
     for i, cl_i in enumerate(cluster_assignments):
-        print("i,cli", i , cl_i)
         new = multivariate_normal.rvs(mean=means[cl_i, :])
 
-
-        print(new.shape, features[i,:].shape)
         features[i, :] = new
     return features
 

@@ -2,7 +2,7 @@
 from sklearn.metrics import normalized_mutual_info_score
 import numpy as np
 
-TIME_STR = "17_30"  # replace with time str from your data
+TIME_STR = "46_27"  # replace with time str from your data
 
 
 
@@ -21,17 +21,17 @@ def score_clf(clf=None):
 
 
 def score_clusters_train(assignmnet=None):
-    if assignmnet:
+    if not assignmnet is None:
         true_cl = loader("cl")
-        print("Classifier accuracy:", normalized_mutual_info_score(assignmnet, true_cl))
+        print("Training cluster accuracy:", normalized_mutual_info_score(assignmnet, true_cl))
     else:
         print("No training clustering given")
 
 
 def score_clusters_test(assignmnet=None):
-    if assignmnet:
+    if not assignmnet is None:
         true_cl = loader("cl_test")
-        print("Classifier accuracy:", normalized_mutual_info_score(assignmnet, true_cl))
+        print("Test cluster accuracy:", normalized_mutual_info_score(assignmnet, true_cl))
     else:
         print("No training clustering given")
 
