@@ -20,4 +20,4 @@ df
 
 from plotly import graph_objects as go
 
-go.Figure(data=go.Heatmap(z=df.values)).show()
+go.Figure(data=go.Heatmap(z=df.values)).show(renderer="svg")
