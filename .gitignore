@@ -4,3 +4,5 @@ data/
 __pycache__/
 .idea/
 .DS_Store
+results/
+comparing_classifiers/bicluster.ipynb
